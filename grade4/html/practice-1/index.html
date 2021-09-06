@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>최태산_201534_149278</title>
+    <style>
+        body {
+            padding: 20px;
+        }
+        article {
+            margin-top: 30px;
+        }
+        img {
+            width: 50%;
+        }
+    </style>
+</head>
+<body>
+<main>
+    <h1>HTML5 Practice.</h1>
+    <section>
+        <section class="image">
+            <h2>1. Image rendering</h2>
+            <img src="./static/image/sample.jpg" alt="sample image"/>
+        </section>
+        <section class="datalist">
+            <h2>2. datalist tag</h2>
+            <label for="input">4학년 2학기 수강 과목 중 재미있는 것은 무엇 인가요? </label>
+            <input id="input" list="datalist" />
+            <datalist id="datalist">
+                <option value="business-strategy" label="경영전략론" disabled>
+                <option value="cloud-computing" label="클라우드컴퓨팅">
+                <option value="HTML5" label="HTML5">
+                <option value="AI" label="인공지능">
+                <option value="understanding-big-data" label="빅데이터의이해">
+                <option value="sex-love-society" label="성,사랑,사회">
+            </datalist>
+        </section>
+        <section class="form">
+            <h2>3. output tag</h2>
+            <form id="form">
+                <label for="pre-number">학번 앞자리</label>
+                <input id="pre-number" type="number" value="201534">
+
+                <label for="post-number">학번 뒷자리</label>
+                <input id="post-number" type="number" value="149278">
+
+                <output>0</output>
+            </form>
+        </section>
+    </section>
+</main>
+</body>
+<script>
+  const form = document.querySelector('#form')
+  if (!form) {
+    throw new Error('Invalid form element with #form.')
+  }
+  const [pre, post] = form.querySelectorAll('input')
+  if (!(pre && post)) {
+    throw new Error('Invalid input elements in the form tag.')
+  }
+  const output = form.querySelector('output');
+  if (!output) {
+    throw new Error('Invalid output element in the form tag.')
+  }
+  const print = () => output.value = (+pre.value) + (+post.value)
+  form.addEventListener('input', print);
+  print();
+</script>
+</html>
